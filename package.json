@@ -29,5 +29,8 @@
   },
   "dependencies": {
     "reselect": "^4.0.0"
+  },
+  "resolutions": {
+    "**/lodash": "4.17.14"
   }
 }
