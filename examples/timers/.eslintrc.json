@@ -1,0 +1,1 @@
+{ "extends": ["@infuse/eslint-config/react"] }
