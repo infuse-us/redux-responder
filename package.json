@@ -8,10 +8,17 @@
     "lint": "eslint .",
     "test": "mocha --require @babel/register"
   },
-  "repository": "https://github.com/jaschaephraim/redux-responder",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/infuse-us/redux-responder.git"
+  },
   "author": "Jascha Ephraim <jascha@jaschaephraim.com>",
   "license": "MIT",
-  "private": false,
+  "keywords": [
+    "redux",
+    "responder",
+    "flux"
+  ],
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
