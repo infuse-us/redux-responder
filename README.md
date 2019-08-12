@@ -15,6 +15,8 @@ Responder enforces the convention that only a change in state will initiate an u
 3. [Testing](#testing)
 4. [Examples](#examples)
 
+*Note: There is a similar mechanism called "Reactors" included in the very interesting [Redux Bundler](https://github.com/HenrikJoreteg/redux-bundler) library.*
+
 ## Usage
 
 Responders use [Reselect](https://github.com/reduxjs/reselect) under the hood, and work in a similar way. If any of the values specified by an array of state selectors change, they are passed to a function that optionally returns a promise. Action creators can be specified for both success and failure of that promise.
@@ -61,14 +63,18 @@ const initialState = {
 const reducer = (state, { type, payload }) => {
   switch (type) {
     case 'STORE_RESPONSE':
-      state.response = payload.response;
-      break;
+      return {
+        ...state,
+        response: payload.response,
+      };
     case 'ERROR':
-      state.error = payload.error;
-      break;
+      return {
+        ...state,
+        error: payload.error,
+      };
     default:
+      return state;
   }
-  return state;
 };
 
 const initiateRequest = () => async (dispatch) => {
@@ -109,18 +115,24 @@ const initialState = {
 const reducer = (state, { type, payload }) => {
   switch (type) {
     case 'REQUEST_INITIATED':
-      state.requestStatus = 'INITIATED';
-      break;
+      return {
+        ...state,
+        requestStatus: 'INITIATED',
+      };
     case 'STORE_RESPONSE':
-      state.requestStatus = 'COMPLETE';
-      state.response = payload.response;
-      break;
+      return {
+        ...state,
+        requestStatus: 'COMPLETE',
+        response: payload.response,
+      };
     case 'ERROR':
-      state.error = payload.error;
-      break;
+      return {
+        ...state,
+        error: payload.error,
+      };
     default:
+      return state;
   }
-  return state;
 };
 
 const initiateRequest = () => ({
