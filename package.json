@@ -2,11 +2,13 @@
   "name": "redux-responder",
   "version": "1.0.1",
   "description": "Redux without side effects",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "typings": "src/index.d.ts",
   "scripts": {
     "lint": "eslint .",
-    "test": "mocha --require @babel/register"
+    "test": "mocha --require @babel/register",
+    "build": "./node_modules/.bin/babel src --out-dir lib",
+    "prepublish": "npm test && npm run build"
   },
   "repository": {
     "type": "git",
@@ -20,6 +22,7 @@
     "flux"
   ],
   "devDependencies": {
+    "@babel/cli": "^7.6.4",
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/register": "^7.5.5",
