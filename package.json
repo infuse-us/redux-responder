@@ -1,6 +1,6 @@
 {
   "name": "redux-responder",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Redux without side effects",
   "main": "lib/index.js",
   "typings": "src/index.d.ts",
